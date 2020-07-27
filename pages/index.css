@@ -1,0 +1,19 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts.css);
+
+
+@import url(../block/header/header.css);
+@import url(../block/container-list/container-list.css);
+@import url(../block/footer/footer.css);
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    background: #0079BF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

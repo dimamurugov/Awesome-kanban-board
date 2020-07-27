@@ -1,0 +1,19 @@
+@import url(__container-tasks/footer__container-tasks.css);
+@import url(__task/footer__task.css);
+
+.footer {
+    height: 55px;
+    background: #0067A3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #FFFFFF;
+}
