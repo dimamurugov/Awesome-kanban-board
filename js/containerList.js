@@ -1,21 +1,23 @@
 class ContainerList {
-    constructor(container, buttonAddList, _createList) {
+    constructor(container, _createList) {
         this.container = container;
-        this.buttonAddList = buttonAddList;
+        
         this._createList = _createList;
     }
 
     addList(element) {
-        this.container.appendChild(element);
+        const theFirstChild = this.container.firstChild;
+        this.container.insertBefore(element, theFirstChild);
     }
 
     render(massObj) {
 
-        massObj.forEach(item => {
+        massObj.reverse().forEach(item => {
     
-            localStorage.setItem('item.title', JSON.stringify(item));
+            localStorage.setItem(item.title, JSON.stringify(item));
             const newList = this._createList(item);
             this.addList(newList);
+            
         });
         
 

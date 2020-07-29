@@ -27,6 +27,5 @@ const dataMock = [
             name: 'Sprint bugfix'
         }],
     }
-    // code
-   ]
+]
    

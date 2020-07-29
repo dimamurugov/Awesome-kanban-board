@@ -1,7 +1,10 @@
 class List {
     constructor(data) {
         this.data = data;
-    
+        
+        this.placeList = undefined;
+        this.remove = this.remove.bind(this); 
+        this.bluuur = this.bluuur.bind(this);
     }
 
     //<input class = "list__input-title" type="text" placeholder="title" autofocus>
@@ -29,23 +32,35 @@ class List {
         </div>`);
         
         this.placeList = template.firstElementChild;
-        const placeListTitle = this.placeList.querySelector(".list__title");
-        placeListTitle.textContent = this.data.title;
+        //const placeTitle = this.placeList.querySelector(".list__header-list");
+        this.removeButton = this.placeList.querySelector(".list__menu");
         
+        this.ListTitle = this.placeList.querySelector(".list__title");
+        this.ListTitle.textContent = this.data.title;
+
+        this.setListeners();
+
         return this.placeList
     }
-
+    bluuur() {
+        console.log('РАСФУКАСИРОВКА');
+    }
     remove() {
-
+        const selectList = this.placeList.closest('.list');
+        selectList.remove();
+        this.removeListernes();
+        localStorage.removeItem(this.ListTitle.textContent)
     }
     
     setListeners() {
-        //this.likeIcon.addEventListener("click", this.like);
-  
+        this.removeButton.addEventListener("click", this.remove);
+        // if (this.inputTitle !== undefined) {
+        //     this.inputTitle.addEventListener("blur", this.bluuur);
+        // }
     }
   
     removeListernes() {
-        //this.likeIcon.removeEventListener("click", this.like);
+        this.removeButton.removeEventListener("click", this.remove);
   
     }
 }

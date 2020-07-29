@@ -30,6 +30,17 @@
         <p class="footer__copyright">Kanban board by Дмитрий Муругов 2020</YEAR></p>
 
     </footer>
+
+    <div class="popup popup__is-closed">
+        <div class="popup__content">
+            <img class="popup__close" src="./images/close.svg" alt="">
+            <h3 class="popup__title">New list</h3>
+            <form class="popup__form" action="">
+                <input class="popup__input" id="profile-name" type="text" name="titleField" required minlength="2" maxlength="30" placeholder="title">
+                <button class="button popup__button" type="submit" id="submit" name="button">Add list</button>   
+            </form>
+        </div>
+    </div>
 </body>
 
 <script src="js/containerList.js"></script>

@@ -6,6 +6,7 @@
 @import url(../block/container-list/container-list.css);
 @import url(../block/footer/footer.css);
 @import url(../block/list/list.css);
+@import url(../block/popup/popup.css);
 
 html {
     height: 100%;
