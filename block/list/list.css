@@ -1,0 +1,17 @@
+@import url(__container-card/list__container-card.css);
+@import url(__card/list__card.css);
+@import url(__add-button/list__add-button.css);
+@import url(__header-list/list__header-list.css);
+@import url(__title/list__title.css);
+@import url(__menu/list__menu.css);
+
+.list {
+    min-width: 282px;
+    
+    background: #EBECF0;
+    border-radius: 10px;
+    padding: 12px;
+    font-family: 'Roboto';
+    margin-bottom: auto;
+    margin-right: 24px;
+}

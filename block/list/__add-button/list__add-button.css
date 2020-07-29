@@ -1,0 +1,15 @@
+.list__add-button {
+    background-color: #EBECF0;
+    border: 0;
+    color: #5E6C84;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.list__add-button::before {
+    content: url(../../../images/plusAdd.svg);
+}
