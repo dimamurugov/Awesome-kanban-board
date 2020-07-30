@@ -9,22 +9,22 @@ class ContainerList {
         const theFirstChild = this.container.firstChild;
         this.container.insertBefore(element, theFirstChild);
     }
-
-    render(massObj) {
-
+    addDataMockObj(massObj) {
         massObj.reverse().forEach(item => {
-    
             localStorage.setItem(item.title, JSON.stringify(item));
-            const newList = this._createList(item);
-            this.addList(newList);
-            
         });
-        
-
-
     }
-    setListeners() {
-        //this.buttonAddList.addEventListener("click", this.);
-  
+
+    render() {
+
+        let keys = Object.keys(localStorage);
+        
+        for(let key of keys) {
+            let tempJson = localStorage.getItem(key); 
+            let tempObj = JSON.parse(tempJson);
+            
+            const newList = this._createList(tempObj);
+            this.addList(newList);
+        }
     }
 }

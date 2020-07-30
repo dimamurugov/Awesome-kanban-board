@@ -9,26 +9,20 @@ function _createList(data) {
     const newList = new List(data);
     return newList.create()
 }
-//Нужен? Потом разберусь
-function layoutObj () {
-    return {
-        title: '',
-        issues: [{
-            id: '',
-            name: ''
-        }],
-    }
-}
+
 
 function submitAddListForm(event) {
     event.preventDefault();
     
-    const data = {};
+    const data = {
+        title: '',
+        issues: []
+    };
     data.title = this.form.elements.titleField.value;
     
     const temp = _createList(data);
     containerList.addList(temp);
-    
+    console.log(data);
     localStorage.setItem(data.title, JSON.stringify(data));
 
     this.close();
@@ -36,8 +30,11 @@ function submitAddListForm(event) {
 
 
 const containerList = new ContainerList(placeList, _createList);
-containerList.setListeners();
-containerList.render(dataMock);
+// containerList.setListeners();
+
+//Добавляем в localStorage стандартные 4 листа Backlog,Ready, inProgress, Finished
+containerList.addDataMockObj(dataMock);
+containerList.render();
 
 const addListPopup = new Popup(popupAdd, formAdd, openButtonPopup, submitAddListForm);
 addListPopup.setListeners();

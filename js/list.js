@@ -4,7 +4,9 @@ class List {
         
         this.placeList = undefined;
         this.remove = this.remove.bind(this); 
-        this.bluuur = this.bluuur.bind(this);
+        this.addTask = this.addTask.bind(this); 
+
+        this.saveTask = this.saveTask.bind(this);
     }
 
     //<input class = "list__input-title" type="text" placeholder="title" autofocus>
@@ -32,35 +34,69 @@ class List {
         </div>`);
         
         this.placeList = template.firstElementChild;
-        //const placeTitle = this.placeList.querySelector(".list__header-list");
-        this.removeButton = this.placeList.querySelector(".list__menu");
         
-        this.ListTitle = this.placeList.querySelector(".list__title");
-        this.ListTitle.textContent = this.data.title;
+        this.removeButton = this.placeList.querySelector(".list__menu");
+        this.buttonAddTask = this.placeList.querySelector(".list__add-button");
+        this.placeCards = this.placeList.querySelector(".list__container-card");
+        this.listTitle = this.placeList.querySelector(".list__title");
+        this.listTitle.textContent = this.data.title;
 
         this.setListeners();
 
         return this.placeList
     }
-    bluuur() {
-        console.log('РАСФУКАСИРОВКА');
-    }
+   
     remove() {
         const selectList = this.placeList.closest('.list');
         selectList.remove();
         this.removeListernes();
-        localStorage.removeItem(this.ListTitle.textContent)
+        localStorage.removeItem(this.listTitle.textContent)
+    }
+    saveTask() {
+        const textTask = this.inputTask.value;
+        this.inputTask.removeEventListener("blur", this.saveTask);
+        this.card.firstElementChild.remove();
+
+        if (textTask !== "" ) {
+            this.card.insertAdjacentHTML('beforeend', `    
+            <p class="list__text-task">${textTask}</p>`);
+
+
+        } else {
+            this.card.remove();
+        }
+        
+        
+        
+    }
+    addTask() {
+        const tempCard = document.createElement("div");
+        tempCard.insertAdjacentHTML('beforeend', `    
+        <li class="list__card">
+            <input class = "list__input-title" type="text" placeholder="write a task">
+        </li>`);
+
+        this.card = tempCard.firstElementChild;
+        this.placeCards.appendChild(this.card);
+        this.inputTask = this.placeList.querySelector('.list__input-title');
+        
+        this.inputTask.focus();
+        
+        this.inputTask.addEventListener("blur", this.saveTask);
+        //Слушатель для сохранения задания по нажанитию Enter
+        this.inputTask.addEventListener('keydown', (e) => {
+            if (e.keyCode === 13) {
+                this.saveTask();
+            }
+          });
     }
     
     setListeners() {
         this.removeButton.addEventListener("click", this.remove);
-        // if (this.inputTitle !== undefined) {
-        //     this.inputTitle.addEventListener("blur", this.bluuur);
-        // }
+        this.buttonAddTask.addEventListener("click", this.addTask);
     }
   
     removeListernes() {
         this.removeButton.removeEventListener("click", this.remove);
-  
     }
 }

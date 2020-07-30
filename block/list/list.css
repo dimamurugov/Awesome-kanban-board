@@ -4,6 +4,8 @@
 @import url(__header-list/list__header-list.css);
 @import url(__title/list__title.css);
 @import url(__menu/list__menu.css);
+@import url(__text-task/list__text-task.css);
+@import url(__input-title/list__input-title.css);
 
 .list {
     min-width: 282px;
