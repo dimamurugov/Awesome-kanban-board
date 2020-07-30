@@ -4,27 +4,25 @@ class ContainerList {
         
         this._createList = _createList;
     }
-
+    getDataMock() {
+        return this.dataMock
+    }
     addList(element) {
         const theFirstChild = this.container.firstChild;
         this.container.insertBefore(element, theFirstChild);
     }
     addDataMockObj(massObj) {
-        massObj.reverse().forEach(item => {
-            localStorage.setItem(item.title, JSON.stringify(item));
-        });
+        localStorage.setItem('dataMock', JSON.stringify(massObj));
     }
 
-    render() {
+    render() {        
+        const tempJson = localStorage.getItem('dataMock'); 
+        this.dataMock = JSON.parse(tempJson);
 
-        let keys = Object.keys(localStorage);
-        
-        for(let key of keys) {
-            let tempJson = localStorage.getItem(key); 
-            let tempObj = JSON.parse(tempJson);
-            
-            const newList = this._createList(tempObj);
+
+        this.dataMock.forEach(item => {            
+            const newList = this._createList(item);
             this.addList(newList);
-        }
+        });
     }
 }

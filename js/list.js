@@ -1,6 +1,7 @@
 class List {
-    constructor(data) {
+    constructor(data, getDataMock) {
         this.data = data;
+        this.getDataMock = getDataMock;
         
         this.placeList = undefined;
         this.remove = this.remove.bind(this); 
@@ -9,11 +10,6 @@ class List {
         this.saveTask = this.saveTask.bind(this);
     }
 
-    //<input class = "list__input-title" type="text" placeholder="title" autofocus>
-
-    // <li>
-    // <p class="list__card">Карточка Один</p>
-    // </li>
 
     create() {
         const template = document.createElement("div");
@@ -26,9 +22,7 @@ class List {
             <h3 class="list__title"></h3>
             <img class="list__menu" src="images/ellipsis.svg" alt="">
         </div>
-        <ul class="list__container-card">
-           
-        </ul>
+        <ul class="list__container-card"></ul>
 
         <button class="list__add-button"> Add card</button>
         </div>`);
@@ -56,17 +50,28 @@ class List {
         const textTask = this.inputTask.value;
         this.inputTask.removeEventListener("blur", this.saveTask);
         this.card.firstElementChild.remove();
-
+        
+        //Проверка пустое ли поле, если нет, то вывод информации
         if (textTask !== "" ) {
             this.card.insertAdjacentHTML('beforeend', `    
-            <p class="list__text-task">${textTask}</p>`);
+            <p class="list__text-task">${textTask}</p>`);            
+            
+            let obj = this.getDataMock().find(item => {
+                return item.title === this.data.title
+            })
 
+            //объект нового задания для листа
+            const taskObj = {
+                id: `task${obj.issues.length + 1}`,
+                name: `${textTask}`
+            };
+            obj.issues.push(taskObj);
+
+            localStorage.setItem('dataMock',JSON.stringify(this.getDataMock()));
 
         } else {
             this.card.remove();
         }
-        
-        
         
     }
     addTask() {

@@ -1,31 +1,22 @@
 const dataMock = [
     {
         title: 'Finished',
-        issues: [{
-            id: 'task1',
-            name: 'Sprint bugfix'
-        }],
+        issues: [],
     },
     {
         title: 'inProgress',
-        issues: [{
-            id: 'task1',
-            name: 'Sprint bugfix'
-        }],
+        issues: [],
     },
     {
         title: 'Ready',
-        issues: [{
-            id: 'task1',
-            name: 'Sprint bugfix'
-        }],
+        issues: [],
     },
     {
         title: 'backlog',
-        issues: [{
-            id: 'task1',
-            name: 'Sprint bugfix'
-        }],
+        issues: [],
     }
 ]
-   
+// {
+//     id: 'task1',
+//     name: 'Sprint bugfix'
+// }

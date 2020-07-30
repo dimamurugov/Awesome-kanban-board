@@ -6,10 +6,12 @@ const formAdd = document.querySelector('.popup__form');
 
 //Колбэк функции
 function _createList(data) {
-    const newList = new List(data);
+    const newList = new List(data,getDataMock);
     return newList.create()
 }
-
+function getDataMock() {
+    return containerList.getDataMock();
+}
 
 function submitAddListForm(event) {
     event.preventDefault();
@@ -20,20 +22,25 @@ function submitAddListForm(event) {
     };
     data.title = this.form.elements.titleField.value;
     
+    let dataMoct = getDataMock();
+    dataMoct.push(data);
+
+    localStorage.setItem('dataMock', JSON.stringify(dataMoct));
+
     const temp = _createList(data);
     containerList.addList(temp);
-    console.log(data);
-    localStorage.setItem(data.title, JSON.stringify(data));
 
     this.close();
 }
 
-
 const containerList = new ContainerList(placeList, _createList);
-// containerList.setListeners();
 
-//Добавляем в localStorage стандартные 4 листа Backlog,Ready, inProgress, Finished
-containerList.addDataMockObj(dataMock);
+
+
+//Проверка если localStorage пустой, то загружаются стандартные странички
+if (localStorage.getItem('dataMock') === null) {
+    containerList.addDataMockObj(dataMock);//Добавляем в localStorage стандартные 4 листа Backlog,Ready, inProgress, Finished
+}
 containerList.render();
 
 const addListPopup = new Popup(popupAdd, formAdd, openButtonPopup, submitAddListForm);

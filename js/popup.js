@@ -7,7 +7,7 @@ class Popup {
 
         this.close = this.close.bind(this);
         this.open = this.open.bind(this); 
-        this.submitFor = this.submitFor.bind(this);
+        this.submitForm = this.submitForm.bind(this);
     }
 
     open() {
@@ -17,12 +17,12 @@ class Popup {
     close() {
         this.popup.classList.remove('popup_is-opened');
     }
-    submitFor(event) {
+    submitForm(event) {
         this.submitAddListForm(event);
     }
     setListeners() {
         this.popup.querySelector('.popup__close').addEventListener("click", this.close);
         this.openButton.addEventListener("click", this.open);
-        this.form.addEventListener("submit", this.submitFor);
+        this.form.addEventListener("submit", this.submitForm);
     }
 }
