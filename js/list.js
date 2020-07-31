@@ -6,8 +6,6 @@ class List {
         this.placeList = undefined;
         this.remove = this.remove.bind(this); 
         this.addTask = this.addTask.bind(this); 
-        //this.openMenu = this.openMenu.bind(this);
-
         this.saveTask = this.saveTask.bind(this);
     }
 

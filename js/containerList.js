@@ -1,8 +1,8 @@
 class ContainerList {
-    constructor(container, _createList) {
+    constructor(container, createList) {
         this.container = container;
         
-        this._createList = _createList;
+        this.createList = createList;
         
         const tempJson = localStorage.getItem('dataMock'); 
         this.dataMock = JSON.parse(tempJson);
@@ -20,7 +20,7 @@ class ContainerList {
 
     render() {        
         this.dataMock.forEach(item => {            
-            const newList = this._createList(item);
+            const newList = this.createList(item);
             this.addList(newList);
         });
     }

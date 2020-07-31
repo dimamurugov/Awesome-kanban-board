@@ -5,7 +5,7 @@ const popupAdd = document.querySelector('.popup');
 const formAdd = document.querySelector('.popup__form');
 
 //Колбэк функции
-function _createList(data) {
+function createList(data) {
     const newList = new List(data,getDataMock);
     return newList.create()
 }
@@ -28,14 +28,14 @@ function submitAddListForm(event) {
 
     localStorage.setItem('dataMock', JSON.stringify(dataMoct));
 
-    const temp = _createList(data);
+    const temp = createList(data);
     containerList.addList(temp);
 
     this.close();
 }
 
 
-const containerList = new ContainerList(placeList, _createList);
+const containerList = new ContainerList(placeList, createList);
 
 //Проверка если localStorage пустой, то загружаются стандартные странички
 if (localStorage.getItem('dataMock') === null) {

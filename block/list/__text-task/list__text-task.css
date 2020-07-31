@@ -1,4 +1,5 @@
 .list__text-task {
     margin: 0;
     padding: 3px 4px;
+    overflow: hidden;
 }
