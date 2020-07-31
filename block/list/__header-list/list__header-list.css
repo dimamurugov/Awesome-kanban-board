@@ -1,4 +1,4 @@
 .list__header-list {
     display: flex;
-    justify-content: space-between;
+    position: relative;
 }

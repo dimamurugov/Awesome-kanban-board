@@ -6,6 +6,7 @@ class List {
         this.placeList = undefined;
         this.remove = this.remove.bind(this); 
         this.addTask = this.addTask.bind(this); 
+        //this.openMenu = this.openMenu.bind(this);
 
         this.saveTask = this.saveTask.bind(this);
     }
@@ -28,26 +29,64 @@ class List {
         </div>`);
         
         this.placeList = template.firstElementChild;
-        
+
         this.removeButton = this.placeList.querySelector(".list__menu");
         this.buttonAddTask = this.placeList.querySelector(".list__add-button");
         this.placeCards = this.placeList.querySelector(".list__container-card");
         this.listTitle = this.placeList.querySelector(".list__title");
         this.listTitle.textContent = this.data.title;
-
+        this.placeMenu = this.placeList.querySelector(".list__dropdown-content");
+        
+        //вставка в листы существующих заданий
+        if (this.data.issues.length !== 0) {
+            this.data.issues.forEach(item => {
+                const tempTask = this._templateTask();
+                const textCard = tempTask.querySelector('.list__text-task');
+                textCard.textContent = item.name;
+                this.placeCards.appendChild(tempTask);
+            })
+        }
+        
         this.setListeners();
 
         return this.placeList
     }
-   
+
     remove() {
         const selectList = this.placeList.closest('.list');
         selectList.remove();
         this.removeListernes();
-        localStorage.removeItem(this.listTitle.textContent)
+        
+        const nameList = this.listTitle.textContent;
+        let data = this.getDataMock();
+        const idList = data.indexOf(this._getObjDataMock(this.listTitle.textContent));
+        
+        
+        data.splice(idList, 1);   
+        
+        
+        localStorage.setItem('dataMock', JSON.stringify(data));
+
+    }
+
+    _templateTask(){
+        const tempCard = document.createElement("div");
+        tempCard.insertAdjacentHTML('beforeend', `    
+        <li class="list__card">
+             <p class="list__text-task"></p>
+        </li>`);
+
+        return tempCard.firstElementChild;
+    }
+
+    _getObjDataMock(nameObj) {
+        return this.getDataMock().find(item => {
+            return item.title === nameObj
+        })
     }
     saveTask() {
         const textTask = this.inputTask.value;
+        
         this.inputTask.removeEventListener("blur", this.saveTask);
         this.card.firstElementChild.remove();
         
@@ -99,6 +138,8 @@ class List {
     setListeners() {
         this.removeButton.addEventListener("click", this.remove);
         this.buttonAddTask.addEventListener("click", this.addTask);
+
+
     }
   
     removeListernes() {

@@ -3,6 +3,9 @@ class ContainerList {
         this.container = container;
         
         this._createList = _createList;
+        
+        const tempJson = localStorage.getItem('dataMock'); 
+        this.dataMock = JSON.parse(tempJson);
     }
     getDataMock() {
         return this.dataMock
@@ -16,10 +19,6 @@ class ContainerList {
     }
 
     render() {        
-        const tempJson = localStorage.getItem('dataMock'); 
-        this.dataMock = JSON.parse(tempJson);
-
-
         this.dataMock.forEach(item => {            
             const newList = this._createList(item);
             this.addList(newList);

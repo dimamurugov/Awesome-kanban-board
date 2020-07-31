@@ -17,3 +17,10 @@
 
     font-family: 'Roboto';
 }
+
+
+@media screen and (max-width: 623px) {
+    .header {
+        justify-content: flex-end;
+    }
+}
