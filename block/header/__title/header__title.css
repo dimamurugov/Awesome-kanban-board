@@ -1,0 +1,14 @@
+.header__title {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 33px;
+    margin: 0;
+    color: #FFFFFF;
+}   
+
+@media screen and (max-width: 623px) {
+    .header__title {
+        display: none;
+    }
+}

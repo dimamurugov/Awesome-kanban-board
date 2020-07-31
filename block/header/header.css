@@ -1,0 +1,26 @@
+@import url(__container-user-avatar/header__container-user-avatar.css);
+@import url(__title/header__title.css);
+@import url(__user-avatar/header__user-avatar.css);
+@import url(__user-menu/header__user-menu.css);
+@import url(__menu-button/header__menu-button.css);
+@import url(__menu-button-arrow/header__menu-button-arrow.css);
+@import url(__button-new-list/header__button-new-list.css);
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0067A3;
+    padding: 0 20px;
+    height: 55px;
+
+    font-family: 'Roboto';
+}
+
+
+@media screen and (max-width: 623px) {
+    .header {
+        justify-content: flex-end;
+    }
+}

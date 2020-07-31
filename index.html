@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Kanban Board</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body>
+    <header class="header">
+        <h3 class="header__title">Awesome Kanban Board</h3>
+        <div class="header__user-menu">
+            <button class="header__button-new-list">Create new list</button>
+            <div class="header__container-user-avatar">
+                <img class="header__user-avatar" src="images/header__avatar.svg" alt="Аватар">
+            </div>
+            <div class="header__menu-button">
+                <div class="header__menu-button-arrow"></div>
+            </div>
+        </div>
+    </header>
+    <main class="container-list">
+        
+    </main>
+    <footer class="footer">
+        <ul class="footer__container-tasks">
+            <li class="footer__task">Active tasks: </li>
+            <li class="footer__task">Finished tasks: </li>
+        </ul>
+        <p class="footer__copyright">Kanban board by Дмитрий Муругов 2020</YEAR></p>
+
+    </footer>
+
+    <div class="popup popup__is-closed">
+        <div class="popup__content">
+            <img class="popup__close" src="./images/close.svg" alt="">
+            <h3 class="popup__title">New list</h3>
+            <form class="popup__form" action="">
+                <input class="popup__input" id="profile-name" type="text" name="titleField" required minlength="2" maxlength="30" placeholder="title">
+                <button class="button popup__button" type="submit" id="submit" name="button">Add list</button>   
+            </form>
+        </div>
+    </div>
+</body>
+
+<script src="js/containerList.js"></script>
+<script src="js/popup.js"></script>
+<script src="js/list.js"></script>
+<script src="js/dataMock.js"></script>
+
+<script src="js/index.js"></script>
+
+
+</html>

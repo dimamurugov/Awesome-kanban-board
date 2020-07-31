@@ -1,0 +1,5 @@
+.footer__container-tasks {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}

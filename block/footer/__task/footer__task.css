@@ -1,0 +1,10 @@
+.footer__task {
+    list-style-type: none;
+    margin-right: 36px;
+}
+
+@media screen and (max-width: 685px) {
+    .footer__task {
+        display: none;
+    }
+}

@@ -1,0 +1,37 @@
+@import url(__container-card/list__container-card.css);
+@import url(__card/list__card.css);
+@import url(__add-button/list__add-button.css);
+@import url(__header-list/list__header-list.css);
+@import url(__title/list__title.css);
+@import url(__menu/list__menu.css);
+@import url(__text-task/list__text-task.css);
+@import url(__input-title/list__input-title.css);
+@import url(__dropdown/list__dropdown.css);
+@import url(__dropdown-content/list__dropdown-content.css);
+@import url(__dropdown-item/list__dropdown-item.css);
+@import url(__dropdown-content/_is-opened/list__dropdown-content_is-opened.css);
+
+.list {
+    min-width: 282px;
+    max-width: 100%;
+    background: #EBECF0;
+    border-radius: 10px;
+    padding: 12px;
+    font-family: 'Roboto';
+    margin-bottom: auto;
+    margin-right: 24px;
+}
+
+@media screen and (max-width: 768px) {
+    .list {
+        margin-right: 0;
+        margin-bottom: 50px;
+        min-width: 400px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .list {
+        min-width: 282px;
+    }
+}

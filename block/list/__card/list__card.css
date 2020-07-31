@@ -1,0 +1,7 @@
+.list__card {
+    list-style-type: none;
+    background: #FFFFFF;
+    border-radius: 5px;
+    padding: 7px 8px;
+    margin-bottom: 15px;
+}
